@@ -6,6 +6,6 @@ var Vue = require("vue/dist/vue.js");
 new Vue({
     el: "h1",
     data: {
-        message: "Hello  vue.js"
+        message: "Hello webpack &  vue.js"
     }
 });
