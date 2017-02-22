@@ -1,0 +1,47 @@
+# webpack example
+
+
+# 基本步骤：
+##1.初始化package.json
+ * npm init -y
+##2.安装webpack依赖
+ * npm install webpack --save-dev
+ * npm info webpack : 查看webpack 信息
+ * npm install webpack@1.12.x --save-dev : 安装指定版本的webpack
+
+##3.安装webpack开发工具
+ 使用时，它将启动一个express静态资源web服务器，并且监听和自动运行webpack : localhost:8080 ，
+ 通过一个socket.io 服务实时监听变化并自动刷新页面！
+
+ * npm install webpack-dev-server --save-dev
+ * npm install webpack-dev-server -g
+
+##4.安装css loader
+ * npm install css-loader style-loader
+
+##5.编译显示进度和颜色
+ * webpack --progress --colors
+ 如果想每次修改模块后，都重新编译，开启监听模式：开启后，没有变化的模块会在编译后缓存到内存中，而不会每次都重新编译；
+ * webpack --progress --colors --watch
+
+##6.快速编译，热更新
+ * webpack --progress --colors --watch
+ * webpack-dev-server --progress --colors ：使用开发包
+
+##7.安装加载url-loader
+ * npm install url-loader --save-dev
+
+##8.缩写
+ * --save-dev  : 保存到 package.json 的 devDependencies 依赖中 缩写：-D
+ * --save      : 保存到 package.json 的 dependencies  依赖中 缩写 ： -S
+
+##9.安装vue
+ * npm install vue -D
+ * commonJS 引入 require('vue/dist/vue.js')
+ * Babel 引入 import Vue from 'vue/dist/vue.js';
+
+
+
+
+
+
