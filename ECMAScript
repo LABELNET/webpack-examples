@@ -1,0 +1,84 @@
+#检查当前node环境支持ES6情况
+ * npm install es-checker -g
+ * es-checker
+#babel 转码器
+ *npm install babel-preset-es2015 -D  : es2015 转码规则
+ *npm install babel-preset-react -D : react 转码规则
+ *npm install babel-preset-stage-3 -D : ES7 不同阶段语法提案的转码规则（共四个阶段），0,1,2,3 选装一个；
+ *.babelrc 基本格式 : presets 定义转码规则，plugins 插件
+     {
+       "presets": [
+         "es2015",
+         "react",
+         "stage-3"
+       ],
+       "plugins": []
+     }
+ *npm install babel-cli -g : 安装 babel-cli 命令行工具
+
+#babel 转码器 命令
+ *babel example.js  : 输出标准的js结果
+ *babel example.js --out-file a1.js : 输出标准js 到 a1.js
+ *babel example.js -o a1.js : 输出标准js 到 a1.js
+ *babel src --out-dir lib  : 将src输出标准js到lib
+ *babel src -d lib  : 将src输出标准js到lib
+ *babel src -d lib  -s : 将src输出标准js到lib , -s 参数生成source map文件
+
+#babel node REPL环境
+ *babel-node  : babel-cli 安装时自带babel-node 命令
+ *babel-node  : 进入REPL环境
+ *.exit ：退出REPL环境
+ *babel-node es6.js : 直接运行es6脚本
+
+#babel register
+ 改写require命令，为其加上一个钩子，每当require加载.js , .jsx ,.es .es6的文件时，就好先用babel进行转码；
+ * npm install babel-register -D : 安装
+ * require('babel-register')  : 必须先加载
+ * require('./index.js')  ：自动转码
+
+#babel core
+ 某些文件需要使用babel api转码
+ * npm install babel-core -S : 安装core核心包
+ * require('babel-core')
+
+#babel polyfill
+ babel 只转换新的js语法，而不转换新的API ，使用 babel-polyfill ,未当前环境提供一个垫片。
+ * npm install babel-polyfill -S: 安装
+ * require('babel-polyfill');
+ * import 'babel-polyfill';
+
+#babelify
+ 打包成浏览器可使用脚本
+ * npm install babelify babel-preset-2015 -D : 安装
+ * browserify script.js -o bundle.js \ -t [babelify --presets [es2015]] : 命令行
+ * package.json 配置使用
+ {
+   "browserify": {
+     "transform": [["babelify", { "presets": ["es2015"] }]]
+   }
+ }
+
+#loader
+ *npm install file-loader -D : 安装file-loader
+
+#ESLint
+  静态检查代码语法和风格
+  *npm install eslint babel-eslint -D : 安装
+  *新建.eslintrc 配置文件
+  {
+    "parser": "babel-eslint",
+    "rules": {
+      ...
+    }
+  }
+  *package.json 配置
+    {
+      "name": "my-module",
+      "scripts": {
+        "lint": "eslint my-files.js"
+      },
+      "devDependencies": {
+        "babel-eslint": "...",
+        "eslint": "..."
+      }
+    }
